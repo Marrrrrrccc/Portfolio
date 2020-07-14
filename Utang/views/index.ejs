@@ -1,0 +1,22 @@
+<%-include ("partials/header")%>
+<div class="ui main text container segment">
+    <div class="ui huge header">
+        Komzar
+    </div>
+    <div class="ui attached top ">
+        <div class="ui divided items segment">
+            <%foundUtang.forEach(Utang => {%>
+            <div class="item">
+                <div class="ui huge header">
+                    <%=Utang.name%>
+                </div>
+                <div class="extra">
+                    <a href="credit/<%=Utang._id%>" class="ui button inverted blue">More</a>
+                    <form action="/credit/<%=Utang._id%>?_method=delete" method=post>
+                        <button class="ui button inverted blue">Delete</button></form>
+                </div>
+            </div>
+            <%})%>
+        </div>
+    </div>
+    <%-include ("partials/footer")%>

@@ -1,0 +1,17 @@
+<%-include ("partials/header")%>
+<div class="ui main text container segment">
+    <div class="ui huge header">
+        <%=foundProfile.name%>
+    </div>
+    <a class="ui button inverted blue " href="/credit/<%=foundProfile._id%>/edit">Edit</a> <a
+        class="ui button inverted blue" href="/credit/<%=foundProfile._id%>/add">Add</a><br>
+    <%foundProfile.credits.forEach(function(utang){%>
+    <%=utang.credit%> - <%=utang.description%> (<em>Created by <%=utang.author.username%></em>)
+    <form action="/credit/<%= utang.id%>/credits?_method=delete" method="POST"> <button
+            class="ui button inverted blue">Delete</button></form>
+    </form>
+    <p><%result = result + Number(utang.credit)%></p>
+    <%})%>
+    <h1 id="result">Total: <%=result%></h1>
+</div>
+<%-include ("partials/footer")%>
